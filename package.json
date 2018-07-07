@@ -6,7 +6,8 @@
   "author": "Adum",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -p",
+    "server": "webpack-dev-server --open",
+    "build": "set NODE_ENV='production'&&webpack -p",
     "test": "jest"
   },
   "devDependencies": {
@@ -14,7 +15,13 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "jest": "^23.3.0",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16",
     "webpack": "^4.15.0",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "vue": "^2.5.16"
   }
 }

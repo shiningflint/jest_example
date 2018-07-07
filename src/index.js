@@ -1,9 +1,8 @@
-import { add, joinString } from './utils'
+import Vue from 'vue'
+import Counter from './Counter/index.vue'
 
-const kentang = add(5,6)
+const leCounter = new Vue({
+  render: exec => exec(Counter)
+})
 
-const pisang = joinString('Hello', 'Adum')
-
-console.log(kentang)
-
-console.log(pisang)
+leCounter.$mount(document.getElementById('vueapp'))
