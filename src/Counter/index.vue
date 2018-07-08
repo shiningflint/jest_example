@@ -13,13 +13,17 @@
 <script>
 import NumberCounter from './NumberCounter.vue'
 export default {
+  props: {
+    min: Number,
+    max: Number
+  },
   components: {
     NumberCounter
   },
   data () {
     return {
       title: 'bananas',
-      number: 0
+      number: this.min || 0
     }
   },
   methods: {
@@ -27,7 +31,7 @@ export default {
       this.number += 1
     },
     decreaseNumber () {
-      this.number -= 1
+      if (this.min === undefined || this.number > this.min) this.number -= 1
     }
   }
 }
