@@ -1,10 +1,20 @@
-import Vue from 'vue'
 import NumberCounter from '../src/Counter/NumberCounter.vue'
+import { shallowMount } from '@vue/test-utils'
 
 describe('NumberCounter', () => {
-  // Inspect the methods
-  it('Has increaseNumber & decreaseNumber methods', () => {
-    expect(typeof NumberCounter.methods.increaseNumber).toBe('function')
-    expect(typeof NumberCounter.methods.decreaseNumber).toBe('function')
+  let wrapper
+
+  beforeEach(() => {
+    wrapper = shallowMount(NumberCounter)
+  })
+
+  it('emits increment', () => {
+    wrapper.vm.increaseNumber()
+    expect(wrapper.emitted().increaseNumber).toBeTruthy()
+  })
+
+  it('emits decrement', () => {
+    wrapper.vm.decreaseNumber()
+    expect(wrapper.emitted().decreaseNumber).toBeTruthy()
   })
 })
