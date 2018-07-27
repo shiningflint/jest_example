@@ -1,8 +1,19 @@
-import Vue from 'vue'
 import Counter from './Counter/index.vue'
 
-const leCounter = new Vue({
-  render: exec => exec(Counter, { props: { min: 0 } })
-})
+function getComponent() {
+  return import(/* webpackChunkName: "vue" */ 'vue').then(vue => {
+    return vue.default
+  }).catch(error => 'PLANE CRASHING! WORLD ENDING!')
+}
 
-leCounter.$mount(document.getElementById('vueapp'))
+document.getElementById('load-vue').onclick = function(e) {
+  getComponent().then(Vue => {
+    const leCounter = new Vue({
+      render: exec => exec(Counter, { props: { min: 0 } })
+    })
+
+    leCounter.$mount(document.getElementById('vueapp'))
+
+    e.target.outerHTML = ''
+  })
+}

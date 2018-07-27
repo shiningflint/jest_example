@@ -6,7 +6,8 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'jesttest.min.js',
-    publicPath: '/dist'
+    chunkFilename: '[name].min.js',
+    publicPath: '/dist/'
   },
   module: {
     rules: [
